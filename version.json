@@ -1,0 +1,16 @@
+{
+  "darwin":{
+    "version":"1.1.0",
+    "date":"18-01-02",
+    "desc":"变更：\n1,修复错误。\n2,增加天气显示。\n3,降低资源占用。(test)",
+    "chance":0.5,
+    "url":"http://afcapp.boringuniverse.com/download/test-down.zip"
+  },
+  "win32":{
+    "version":"1.1.0",
+    "date":"18-01-02",
+    "desc":"变更：\n1,修复错误。\n2,增加天气显示。\n3,降低资源占用。(test)",
+    "chance":0.5,
+    "url":"http://afcapp.boringuniverse.com/download/test-down.zip"
+  }
+}
