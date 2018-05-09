@@ -6,4 +6,7 @@ Netqon OpenWebMonitor
 
 ![](libs/1.jpg)
 
+
+QQ群、微信群见下载页。
+
 (C) 2018 Netqon.com
