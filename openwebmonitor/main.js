@@ -16,6 +16,7 @@ const fs = require('fs')
 const linkway = require('./linkway')
 const deepdiff = require('deep-diff')
 const isOnline = require('is-online')
+const lite_notifier = require('electron-notifications-lite')
 
 require('superagent-proxy')(request)
 
@@ -30,7 +31,7 @@ g_config_cache = store.get('config', {
   notify_recovery: true,
   check_interval: 'B',
   launch_at_login: true,
-  proxy:''
+  proxy: ''
 })
 
 app.setLoginItemSettings({
@@ -285,12 +286,16 @@ function createMainWindow() {
   if (mainWindow == null) {
 
     // Create the browser window.
-    mainWindow = new BrowserWindow({
-      webPreferences: { webSecurity: false }, //关闭同源检查，为了ad页面可以调用electron来在外部浏览器打开url
+    let main_win_option = {
       width: store.get('width', 1150),
-      height: store.get('height', 600),
-      titleBarStyle: 'hidden'
-    })
+      height: store.get('height', 700)
+    }
+    if (utils.is_mac()) {
+      main_win_option.titleBarStyle = 'hidden'
+    } else {
+      // main_win_option.frame = false
+    }
+    mainWindow = new BrowserWindow(main_win_option)
 
     // and load the index.html of the app.
     mainWindow.loadURL(url.format({
@@ -611,7 +616,7 @@ function database_init() {
       way: utils.TARGET_WAY.LINK,
       added_only: 0,
       cookie: '',
-      use_proxy:0
+      use_proxy: 0
     })
 
     console.log('database inited')
@@ -620,10 +625,10 @@ function database_init() {
 
 }
 
-function db_get_all_targets(cb, order=false) {
+function db_get_all_targets(cb, order = false) {
   g_db.serialize(function () {
 
-    let sql = `SELECT  id, name, address, state, topindex, icon, min_change, min_text_line, read, muted, way, added_only, cookie, use_proxy  FROM target ${order? 'ORDER BY read DESC':''}`;
+    let sql = `SELECT  id, name, address, state, topindex, icon, min_change, min_text_line, read, muted, way, added_only, cookie, use_proxy  FROM target ${order ? 'ORDER BY read DESC' : ''}`;
 
     g_db.all(sql, (err, rows) => {
       if (err) {
@@ -1260,6 +1265,31 @@ function on_new_record(target, new_record) {
 
   console.log('target-icon', target.icon)
   main_utils.notify_all_windows('new-record', { target: target, record: new_record })
+
+
+  if (utils.is_win()) {
+    // notify in windows
+    // TODO dont notify when in game!
+
+    let b_notify =
+      (new_record.state == utils.RECORD_STATE.NORMAL && g_config_cache.notify_change) ||
+      (new_record.state == utils.RECORD_STATE.EXCEPTION && g_config_cache.notify_exception) ||
+      (new_record.state == utils.RECORD_STATE.RECOVERY && g_config_cache.notify_recovery)
+
+    let title = target.name
+    let message = (new_record.state == utils.RECORD_STATE.NORMAL) ? 'New Change' :
+      (new_record.state == utils.RECORD_STATE.EXCEPTION) ? 'New Exception' : 'Recovery'
+
+    if (b_notify) {
+      lite_notifier.notify(title, {
+        message: message,
+        icon: path.join(__dirname, "images", "icon_about_win.png"),
+        duration: 3 * 1000,
+        adicon: target.icon
+      })
+    }
+
+  }
 }
 
 function on_target_new_icon(target, new_icon) {
