@@ -6,7 +6,6 @@ raw_config.json
 dist
 yarn.lock
 build/config.gypi
-package-lock.json
 fdc/.vs
 fdc/x64
 fdc/Debug
