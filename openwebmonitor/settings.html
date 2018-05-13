@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title cn="设置" en="Settings"></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
+  <!-- <link href="libs/iconfont.css" rel="stylesheet" /> -->
+  <link href="http://at.alicdn.com/t/font_583925_ki023endha0jm7vi.css" rel="stylesheet" />
+  <script src="libs/jquery.js"></script>
+
+  <script type="text/javascript" src="libs/bootstrap.js"></script>
+  <link rel="stylesheet" href="libs/bootstrap.css" />
+
+  <script type="text/javascript" src="libs/toastr.min.js"></script>
+  <link rel="stylesheet" href="libs/toastr.min.css" />
+
+  <script src="settings.js"></script>
+
+  <script>if (window.module) module = window.module;</script>
+</head>
+
+<body>
+
+
+  <style>
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: gray;
+      position: fixed;
+      bottom: 0px;
+      left: 30%;
+    }
+
+
+    .change {
+      color: darkgreen;
+    }
+
+    .exception {
+      color: darkred;
+    }
+
+    .recovery {
+      color: rebeccapurple;
+    }
+  </style>
+
+  <div class="container">
+
+    <form>
+
+      <fieldset class="form-group">
+        <div class="row">
+          <legend class="col-form-label col-sm-2 pt-0">Notifications</legend>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input sensitive" type="checkbox" name="gridRadios" id="notify_on_change" value="option1" checked>
+              <label class="form-check-label change" for="notify_on_change">
+                On Change
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input sensitive" type="checkbox" name="gridRadios" id="notify_on_exception" value="option2">
+              <label class="form-check-label exception" for="notify_on_exception">
+                On Exception
+              </label>
+            </div>
+            <div class="form-check disabled">
+              <input class="form-check-input sensitive" type="checkbox" name="gridRadios" id="notify_on_recovery" value="option3">
+              <label class="form-check-label recovery" for="notify_on_recovery">
+                On Recovery
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div class="form-group row">
+        <legend class="col-form-label col-sm-2 pt-0">Round Interval</legend>
+        <div class="col-sm-2">
+          <select class="form-control sensitive" id="check_interval">
+            <option value="X">1 minutes</option>
+            <option value="A">5 minutes</option>
+            <option value="B">15 minutes</option>
+            <option value="C">30 minutes</option>
+            <option value="D">1 hour</option>
+            <option value="E">2 hours</option>
+            <option value="F">4 hours</option>
+            <option value="G">6 hours</option>
+            <option value="H">12 hours</option>
+            <option value="I">24 hours</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <legend class="col-form-label col-sm-2 pt-0">General</legend>
+        <div class="col-sm-4">
+          <div class="form-check">
+            <input class="form-check-input sensitive" type="checkbox" value="" id="launch_at_login">
+            <label class="form-check-label" for="launch_at_login">
+              Launch at Login
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-4">
+          <label for="proxy">Proxy</label>
+          <input type="email" class="form-control sensitive" id="proxy" aria-describedby="emailHelp" placeholder="Enter proxy if needed">
+          <small id="emailHelp" class="form-text text-muted">e.g., socks5://127.0.0.1:1086</small>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <footer>
+    <span>&copy; 2018 netqon.com</span>
+  </footer>
+
+</body>
+
+</html>

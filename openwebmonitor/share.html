@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title cn="分享" en="Export"></title>
+  <link rel="stylesheet" href="libs/materialize.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="libs/clipboard.min.js"></script>
+  <script type="text/javascript" src="libs/jquery.js" onload="window.$ = window.jQuery = module.exports;"></script>
+  <script type="text/javascript" src="libs/hammer.js" onload="window.Hammer = module.exports;"></script>
+  <script type="text/javascript" src="libs/materialize.min.js"></script>
+</head>
+
+<body>
+
+
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    html,
+    body {
+      margin: 0px;
+      height: 100%;
+    }
+
+    body {
+      background-color: white;
+      color: #4A4A4A;
+      /* font-family: "Courier New", Courier, monospace; */
+      font-family: Arial, Helvetica, sans-serif;
+      font-family: Geneva, Tahoma, Verdana, sans-serif;
+      font-family: PingFangSC-Regular;
+    }
+
+    /* --------common --------- */
+
+    #wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr auto;
+      height: 100%;
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+
+
+    /* ---------- foot ---------- */
+
+    footer {
+      font-size: x-small;
+    }
+
+    #icon {
+      height: 25px;
+      width: 25px;
+      margin: 0px 5px;
+
+    }
+
+    #feedback {
+      margin-bottom: 5px;
+      text-align: right;
+    }
+
+    .foot-action {
+      margin: 0px 0px;
+    }
+
+    #foot_action_wrapper {
+      text-align: center;
+    }
+
+    #foot_flex {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto 1fr;
+    }
+
+    #bar {
+      height: 100%;
+      width: 200px;
+      outline: none;
+      border: none;
+      overflow: none;
+      resize: none;
+      /* height: 360px; */
+      margin-top: 20px;
+      margin-left:20px;
+    }
+
+    #msg {
+      visibility: hidden;
+    }
+
+    /* ---------- body ---------- */
+  </style>
+
+  <div id="wrapper">
+    <div id="content">
+      <textarea id="bar" readonly="readonly"></textarea>
+
+    </div>
+    <div style="text-align:center;"><label id="msg" cn="已复制！">Coppied!</label></div>
+    <div class="row">
+      <a class="waves-effect waves-light btn" id="btn" data-clipboard-target="#bar" cn="复制&关闭">Copy&Close</a>
+    </div>
+
+    <footer>
+      <div id="foot_wrapper">
+
+        <div id="foot_flex">
+          <div></div>
+          <div>
+            <div>
+
+            </div>
+            <div>
+              <a href="#" onclick="open_copyright()">A.F.C App &copy; 2017 boringuniverse.com </a>
+            </div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <script src="share.js"></script>
+</body>
+
+</html>

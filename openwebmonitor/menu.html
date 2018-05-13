@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
+  <!-- <link href="libs/iconfont.css" rel="stylesheet" /> -->
+  <link href="http://at.alicdn.com/t/font_583925_i30nbaprwp5e9udi.css" rel="stylesheet" />
+  <script src="libs/jquery.js"></script>
+  <script>if (window.module) module = window.module;</script>
+
+  <script src="menu.js"></script>
+</head>
+
+<body>
+  <style>
+    :root {
+      --system-theme-color: #007bff;
+    }
+
+    * {
+      transition: all 0.15s ease-in-out;
+    }
+
+    html,
+    body {
+      background: transparent;
+      font-family: GillSans, Calibri, Trebuchet, sans-serif;
+    }
+
+    #head_tail {
+      text-align: center;
+      height: 5px;
+    }
+
+    #head_tail img {
+      height: 10px;
+      position: relative;
+      top: -10px;
+    }
+
+    #world {
+      position: relative;
+      top: -7px;
+      background: white;
+      height: 95vh;
+      border-radius: 5px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    #header {
+      font-size: 12px;
+      color: #9B9B9B;
+      padding: 5px 8px;
+      cursor: default;
+      border-bottom: #EEE 1px solid;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+
+    .record {
+      display: flex;
+    }
+
+    .target-image {
+      width: 35px;
+      height: 35px;
+      border-radius: 3px;
+      margin: 7px 5px 4px 8px;
+    }
+
+    .target-address {
+      overflow: hidden;
+      max-width: 180px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .record-first-line {
+      display: flex;
+      margin-top: 5px;
+    }
+
+    .record-second-line {
+      display: flex;
+      font-size: 12px;
+      color: #4A4A4A;
+    }
+
+    .flex-push {
+      flex-grow: 1;
+    }
+
+    .record {
+      background: white;
+      cursor: pointer;
+      border-bottom: #EEE 1px solid;
+      z-index: 100;
+    }
+
+    .record:hover {
+      background: #EEE;
+    }
+
+    .record-status[type="0"] {
+      color: darkgreen;
+    }
+
+    .record-status[type="1"] {
+      color: darkred;
+    }
+
+    .record-status[type="2"] {
+      color: rebeccapurple;
+    }
+
+    .record-indication {
+      width: 8px;
+    }
+
+    #record_list {
+      overflow: scroll;
+    }
+
+    #footer {
+      text-align: center;
+      border-top: solid 1px #EEE;
+      padding-top: 5px;
+      padding-bottom: 1px;
+    }
+
+    #footer img {
+      position: relative;
+      top: 0px;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      transition: all 0.1s ease-in-out;
+    }
+
+    #footer img:hover{
+      top: -3px;
+    }
+
+    .a_text:hover {
+      color: var(--system-theme-color);
+      cursor: pointer;
+    }
+
+    .icon-btn:hover {
+      color: var(--system-theme-color);
+      cursor: pointer;
+    }
+
+    .icon-btn {
+      font-size: 18px;
+      /* margin-left: 0px; */
+    }
+
+    #templates {
+      position: relative;
+      top: -100px;
+      display: none;
+    }
+
+    #no_content {
+      text-align: center;
+      position: fixed;
+      top: 210px;
+      width: 100%;
+      color: #EEE;
+      z-index: 1;
+    }
+
+    .status-small{
+        font-size: 12px;
+    }
+  </style>
+
+  <div id="head_tail">
+    <img src="images/tail.png" />
+  </div>
+  <div id="world">
+    <div id="header">
+      <div class="open-main">
+        <div>
+          <span class="a_text">Netqon WebMonitor</span>
+        </div>
+      </div>
+      <div>
+        <div>
+          <i class="iconfont icon-plus icon-btn" id="btn_new"></i>
+          <i class="iconfont icon-settings  icon-btn" id="btn_settings"></i>
+        </div>
+      </div>
+    </div>
+
+    <div id="record_list">
+
+    </div>
+
+    <div id="footer" class="open-main">
+      <img src="images/owm_red.png" />
+    </div>
+  </div>
+
+
+  <div id="no_content">
+    <span>v1.0</span><br/>
+    <span>fateleak@netqon.com</span><br/>
+    <span>major@boringuniverse.com</span>
+  </div>
+
+  <div id="templates">
+
+    <div class="record" id="record_template">
+      <div class="target-image-wrapper">
+        <img class="target-image" src="https://ws1.sinaimg.cn/large/006tNc79gy1fpcpup6uj0j30u00u0ad6.jpg" />
+      </div>
+      <div class="flex-push">
+        <div class="record-first-line">
+          <div class="target-name">MacRumors</div>
+          <div class="flex-push"></div>
+          <div class="record-status">Change(-200 +230)</div>
+        </div>
+
+        <div class="record-second-line">
+          <div class="target-address">http://www.macrumors.com/sdfskdflsdjlfjsdklfjlsdjfklsdjfkl</div>
+          <div class="flex-push"></div>
+          <div class="record-time">2 minutes ago</div>
+        </div>
+      </div>
+
+      <div class="record-indication-wrapper">
+        <div class="record-indication" indication="false"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

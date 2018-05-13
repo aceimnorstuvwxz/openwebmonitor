@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title cn="新版本" en="Update"></title>
+  <link rel="stylesheet" href="libs/materialize.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="libs/jquery.js" onload="window.$ = window.jQuery = module.exports;"></script>
+  <script type="text/javascript" src="libs/hammer.js" onload="window.Hammer = module.exports;"></script>
+  <script type="text/javascript" src="libs/materialize.min.js"></script>
+</head>
+
+<body>
+
+
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    html,
+    body {
+      margin: 0px;
+      height: 100%;
+    }
+
+    body {
+      background-color: white;
+      color: #4A4A4A;
+      /* font-family: "Courier New", Courier, monospace; */
+      font-family: Arial, Helvetica, sans-serif;
+      font-family: Geneva, Tahoma, Verdana, sans-serif;
+      font-family: PingFangSC-Regular;
+    }
+
+    /* --------common --------- */
+
+    #wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr auto;
+      height: 100%;
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+
+
+    /* ---------- foot ---------- */
+
+    footer {
+      font-size: x-small;
+    }
+
+    #icon {
+      height: 25px;
+      width: 25px;
+      margin: 0px 5px;
+
+    }
+
+    #feedback {
+      margin-bottom: 5px;
+      text-align: right;
+    }
+
+    .foot-action {
+      margin: 0px 0px;
+    }
+
+    #foot_action_wrapper {
+      text-align: center;
+    }
+
+    #foot_flex {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto 1fr;
+    }
+
+    #bar {
+      height: 100%;
+      /* width: 200px; */
+      outline: none;
+      border: none;
+      overflow: none;
+      resize: none;
+      /* height: 360px; */
+      /* margin-top: 20px; */
+      /* margin-left:40px; */
+    }
+
+    #msg {
+      visibility: hidden;
+    }
+
+    #ver_date, #desc, #download{
+      display: none;
+    }
+
+
+    /* ---------- body ---------- */
+  </style>
+
+  <div id="wrapper" class="container">
+    <div class="row">
+      <form class="col s12">
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+
+        <div class="row" style="text-align:center;" id="loading">
+          <div class="preloader-wrapper small active">
+            <div class="spinner-layer spinner-green-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" id="ver_date" style="text-align:center;">
+            已经是最新版本。
+  
+        </div>
+        <div class="row" id="desc" style="text-align:center;">
+          已经是最新版本。
+
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            
+          </div>
+        </div>
+        <div class="row" style="text-align:center;" id="download">
+          <a class="waves-effect waves-light btn " onclick="on_download()" cn="下载">Download</a>
+
+
+        </div>
+      </form>
+    </div>
+
+
+
+    <footer>
+      <div id="foot_wrapper">
+
+        <div id="foot_flex">
+          <div></div>
+          <div>
+            <div>
+
+            </div>
+            <div>
+              <a href="#" onclick="open_copyright()">&copy; 2018 Netqon.com </a>
+            </div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <script src="update.js"></script>
+</body>
+
+</html>

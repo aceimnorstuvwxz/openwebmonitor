@@ -1,0 +1,70 @@
+{
+  "name": "openwebmonitor",
+  "version": "1.1.0",
+  "productName": "OpenWebMonitor",
+  "description": "Open Source Web service monitor, web content change monitor",
+  "main": "main.js",
+  "build": {
+    "appId": "com.boringuniverse.openwebmonitor",
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": "nsis",
+      "extraFiles": "*.dll"
+    }
+  },
+  "repository": "https://github.com/fateleak/openwebmonitor",
+  "keywords": [
+    "Netqon",
+    "BoringUniverse",
+    "openwebmonitor",
+    "distill",
+    "webwatch",
+    "onwebchange",
+    "监视网页变化",
+    "page monitor",
+    "网页内容监控",
+    "fateleak",
+    "web content monitor",
+    "web service monitor",
+    "姚俊容",
+    "无码科技 脉脉 V2EX",
+    "product hunt",
+    "v2ex",
+    "36kr"
+  ],
+  "author": "netqon.com",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "install-app-deps",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "dependencies": {
+    "active-win-lite": "^2.1.3",
+    "cheerio": "^1.0.0-rc.2",
+    "deep-diff": "^0.3.8",
+    "diff-match-patch": "^1.0.0",
+    "electron-notifications-lite": "^1.2.0",
+    "electron-store": "^1.3.0",
+    "get-favicons": "^1.0.0",
+    "html-to-text": "^4.0.0",
+    "htmlencode": "0.0.4",
+    "is-online": "^7.0.0",
+    "jsonfile": "^4.0.0",
+    "menubar": "^5.2.3",
+    "moment": "^2.21.0",
+    "npm": "^6.0.0",
+    "request": "^2.83.0",
+    "sqlite3": "^3.1.13",
+    "superagent": "^3.8.2",
+    "superagent-proxy": "^1.0.3",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "electron": "^1.7.10",
+    "electron-builder": "^19.49.0"
+  }
+}

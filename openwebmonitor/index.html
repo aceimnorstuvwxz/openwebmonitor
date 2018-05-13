@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Netqon OpenWebMonitor</title>
+
+  <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
+  <!-- <link href="libs/iconfont.css" rel="stylesheet" /> -->
+  <link href="http://at.alicdn.com/t/font_583925_5zluj97vzxj0dx6r.css" rel="stylesheet" />
+  <script src="libs/jquery.js"></script>
+
+  <script type="text/javascript" src="libs/bootstrap.js"></script>
+  <link rel="stylesheet" href="libs/bootstrap.css" />
+
+  <script type="text/javascript" src="libs/toastr.min.js"></script>
+  <link rel="stylesheet" href="libs/toastr.min.css" />
+  <script src="libs/jquery.scrollTo.min.js"></script>
+
+  <script>if (window.module) module = window.module;</script>
+
+  <script src="index.js"></script>
+  <link rel="stylesheet" type="text/css" href="index.css">
+
+</head>
+
+<body>
+  <div id="window_header" class="drag">
+    <div id="head_folder" class="head_segments">
+
+      <a class="btn-head" id="btn_open_settings" title="Setting">
+        <i class="iconfont icon-settings btn-head-icon"></i>
+      </a>
+      <a class="btn-head" id="btn_add_target" title="New target">
+        <i class="iconfont icon-plus btn-head-icon"></i>
+      </a>
+    </div>
+    <div id="head_list" class="head_segments">
+      <div class="flex-push"></div>
+
+      <select id="select_records_filter">
+        <option value="all">All</option>
+        <option value="changes">Changes</option>
+        <option value="exceptions">Exceptions</option>
+      </select>
+    </div>
+
+    <div id="head_edit" class="head_segments">
+
+      <div class="flex-push"></div>
+
+      <select id="select_text_mode">
+        <option value="diff">Diff</option>
+        <option value="added">0nly Added </option>
+        <option value="all">Complete</option>
+      </select>
+
+      <a class="btn-head" id="btn_toogle_short_line_filter" title="Toggle short line filter" pressed="true">
+        <i class="iconfont icon-filter btn-head-icon"></i>
+      </a>
+
+      <a class="btn-head" id="btn_open_snapshot" title="Open snapshot">
+        <i class="iconfont icon-camera btn-head-icon"></i>
+      </a>
+
+      <a class="btn-head" id="btn_open_origin" title="Open origin address">
+        <i class="iconfont icon-imagefilterdrama btn-head-icon"></i>
+      </a>
+    </div>
+  </div>
+  <!-- head end -->
+  <div id="total">
+
+    <!-- targets -->
+    <div id="targets_space">
+
+      <div class="template">
+        <div class="target" id="target_template">
+          <div class="target-image-wrapper">
+            <div>
+              <img class="target-image" src="https://ws3.sinaimg.cn/large/006tNc79gy1fp6z2we00dj300z010t8h.jpg" />
+            </div>
+            <div class="target-indication" indication="true">
+            </div>
+          </div>
+
+          <div>
+            <div class="target-name-line">
+              <div class="target-name-wraper">
+                <span class="target-name">MacRumors</span>
+              </div>
+              <div class="flex-push"></div>
+
+
+              <div class="target-paused" paused="true">
+                <i class="iconfont icon-mediapause"></i>
+              </div>
+              <div class="target-muted" muted="true">
+                <i class="iconfont icon-icon_mute"></i>
+              </div>
+            </div>
+            <div class="target-address">
+              http://www.macrumors.com/index.html
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div id="target_list">
+
+      </div>
+      <div id="fill_target_space">
+
+      </div>
+      <!-- remove target dialog -->
+      <div class="modal fade" id="remove_target_dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Remove Target</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure to remove
+              <span id="remove_target_name">MacRumors</span> and its data?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" id="btn_remove_target_confirm">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- remove target records dialog -->
+      <div class="modal fade" id="delete_records_dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Delete Records</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure to delete
+              <span id="delete_records_target_name">MacRumors</span>'s all records?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" id="btn_delete_records_confirm">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add new target dialog -->
+      <div class="modal fade" id="new_target_dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="target_dialog_title">New target</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="target_form">
+                <div class="form-group row">
+                  <label for="recipient-name" class="col-sm-2 col-form-label">Name:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="new_target_name">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="message-text" class="col-sm-2 col-form-label">Address:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="new_target_address">
+                  </div>
+                </div>
+                <!-- <div class="form-group row"> -->
+                <!-- 
+                <div class="form-check form-check-inline col-sm-12">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                  <label class="form-check-label" for="inlineCheckbox1">Send Notification</label>
+                </div> -->
+                <div class="form-group row ">
+                  <label for="message-text" class="col-sm-3 col-form-label">Diff Way:</label>
+                  <div class="form-check form-check-inline col-sm-2">
+                    <input class="form-check-input" type="radio" name="target_way" id="way_html" value="0">
+                    <label class="form-check-label" for="way_html">HTML</label>
+                  </div>
+                  <div class="form-check form-check-inline col-sm-2">
+                    <input class="form-check-input" type="radio" name="target_way" id="way_text" value="1">
+                    <label class="form-check-label" for="way_text">TEXT</label>
+                  </div>
+                  <div class="form-check form-check-inline col-sm-2">
+                    <input class="form-check-input" type="radio" name="target_way" id="way_link" value="2" checked>
+                    <label class="form-check-label" for="way_link">LINK</label>
+                  </div>
+
+                </div>
+
+                <div class="form-group row">
+                  <label for="message-text" class="col-sm-2 col-form-label">Cookie:
+                    </label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="new_target_cookie">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="message-text" class="col-sm-3 col-form-label">Min Line:</label>
+                  <div class="col-sm-3">
+                    <input type="number" class="form-control" id="new_target_min_text_line" value="0">
+                  </div>
+                  <div class="col-sm-6">
+                    <small id="passwordHelpInline" class="text-muted">
+                      Ignore shorter lines
+                    </small>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="message-text" class="col-sm-3 col-form-label">Min Change:</label>
+                  <div class="col-sm-3">
+                    <input type="number" class="form-control" id="new_target_min_change" value="0">
+                  </div>
+                  <div class="col-sm-6">
+                    <small id="passwordHelpInline" class="text-muted">
+                      Filter out records with smaller diff
+                    </small>
+                  </div>
+                </div>
+
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="added_only" name="added_only">
+                  <label class="form-check-label" for="added_only"> 0nly filter with added content</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="use_proxy" name="use_proxy">
+                  <label class="form-check-label" for="use_proxy"> Use proxy from settings</label>
+                </div>
+                <!-- <small id="passwordHelpInline" class="text-muted">
+                  * Optional </small> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" id="btn_add_target_confirm">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- target space end -->
+
+
+    <div id="help_space">
+      <iframe src="http://openwebmonitor.netqon.com/embedded.html">
+
+      </iframe>
+    </div>
+    <div id="records_space">
+      <div class="template">
+        <div class="record" id="record_template">
+          <div class="record-header">
+            <div class="record-status" type="normal">Change(-44 +100)</div>
+            <div class="flex-push"></div>
+            <div class="record-indication" indication="true"></div>
+          </div>
+
+          <div class="record-footer">
+            <div class="record-number">#33</div>
+            <div class="flex-push"></div>
+            <div class="record-time">2 minutes ago
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div id="record_list">
+
+      </div>
+    </div>
+
+
+    <div id="content_space">
+
+      <div id="html_diff">
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- <span id="btn_settings">Settings<i class="float-btn iconfont icon-settings" ></i></span> -->
+
+</body>
+
+</html>
