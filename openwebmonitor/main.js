@@ -258,7 +258,7 @@ function get_menu_template() {
 // ---------- menubar ----------
 var menubar = require('menubar')
 var mb = menubar({
-  icon: path.join(__dirname, utils.is_win() ? "images/icon_white.png" : "images/menubar_icon_Template.png"),
+  icon: path.join(__dirname, utils.is_win() ? "images/icon_win.png" : "images/menubar_icon_Template.png"),
   width: 366,
   height: 522,
   index: url.format({

@@ -130,7 +130,7 @@ select[disabled="disabled"]{
 #records_space{
     flex-shrink: 0;
     height: calc(100vh - 30px);
-    overflow: scroll;
+    overflow: auto;
     background: #F7F7F7;    
     min-height: calc(100vh - 30px);
     width: 205px;
@@ -180,7 +180,7 @@ select[disabled="disabled"]{
 #target_list{
     /* height: 100vh; */
     max-height: calc(100vh - 30px);
-    overflow: scroll;
+    overflow: auto;
 }
 
 #fill_target_space{

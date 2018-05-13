@@ -12,7 +12,12 @@
     "win": {
       "target": "nsis",
       "extraFiles": "*.dll"
-    }
+    },
+    "files": [
+      "app/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ]
   },
   "repository": "https://github.com/fateleak/openwebmonitor",
   "keywords": [
@@ -37,13 +42,18 @@
   "author": "netqon.com",
   "license": "MIT",
   "scripts": {
-    "start": "electron .",
     "postinstall": "install-app-deps",
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "build",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },
   "dependencies": {
-    "active-win-lite": "^2.1.3",
+    "sqlite3": "^3.1.8",
+    "superagent": "^3.8.2",
+    "superagent-proxy": "^1.0.3",
+    "uuid": "^3.1.0",
     "cheerio": "^1.0.0-rc.2",
     "deep-diff": "^0.3.8",
     "diff-match-patch": "^1.0.0",
@@ -56,15 +66,10 @@
     "jsonfile": "^4.0.0",
     "menubar": "^5.2.3",
     "moment": "^2.21.0",
-    "npm": "^6.0.0",
-    "request": "^2.83.0",
-    "sqlite3": "^3.1.13",
-    "superagent": "^3.8.2",
-    "superagent-proxy": "^1.0.3",
-    "uuid": "^3.1.0"
+    "request": "^2.83.0"
   },
   "devDependencies": {
-    "electron": "^1.7.10",
-    "electron-builder": "^19.49.0"
+    "electron": "^1.4.10",
+    "electron-builder": "^10.8.1"
   }
 }
