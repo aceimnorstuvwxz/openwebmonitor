@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
 window.onbeforeunload = function () {
   console.log("try save before close")
   store.set('width', window.innerWidth)
-  store.set('height', window.innerHeight)
+  store.set('height', window.innerHeight + (utils.is_win() ? 55:0))
 }
 
 /* targets */
