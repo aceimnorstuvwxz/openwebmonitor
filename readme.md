@@ -27,7 +27,6 @@ yarn dist
 
 ### Helping info
 
-Feedback bugs and asking for helping by the QQ group or wechat list on the downloading page.
+Feedback  or discuss with us by the QQ group and wechat listed on the download page.
 
 Thank you for using my software.
-
