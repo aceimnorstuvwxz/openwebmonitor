@@ -1,0 +1,16 @@
+{
+  "darwin":{
+    "version":"0.0.1",
+    "date":"18-01-02",
+    "desc":"test desc",
+    "chance":0.5,
+    "url":"http://test-down.zip"
+  },
+  "win32":{
+    "version":"0.0.1",
+    "date":"18-01-02",
+    "desc":"test desc",
+    "chance":0.5,
+    "url":"http://test-down.zip"
+  }
+}
