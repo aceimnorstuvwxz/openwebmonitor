@@ -4,23 +4,17 @@
 
 Website content change monitor tool
 
-### Mkt-01
+### 功能介绍
 
 ![](https://fate2.oss-cn-shanghai.aliyuncs.com/pool/20180824170052.png)
 
-### Build
+### 下载
 
-```
-cd project
-npm install
-yarn dist
-```
+[前往官网下载 (macOS/Windows)](http://openwebmonitor.netqon.com/)
 
-### Download
+### App截图
 
-[Installer](http://openwebmonitor.netqon.com/) (prebuilds for macOS and win32)
-
-### Screen captures
+![](https://fate2.oss-cn-shanghai.aliyuncs.com/pool/20180831144126.png)
 
 ![](content/libs/0.jpg)
 
@@ -29,9 +23,8 @@ yarn dist
 ![](content/libs/2.jpg)
 
 
+### 帮助信息
 
-### Helping info
+请查看官网的使用指南。
 
-Feedback  or discuss with us by the QQ group and wechat listed on the download page.
-
-Thank you for using my software.
+(C) 2018 netqon.com
