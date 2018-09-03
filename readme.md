@@ -14,7 +14,7 @@ Website content change monitor tool
 
 ### App截图
 
-![](https://fate2.oss-cn-shanghai.aliyuncs.com/pool/20180831144126.png)
+![](content/libs/n0.jpg)
 
 ![](content/libs/0.jpg)
 
