@@ -1,18 +1,36 @@
-# Netqon OpenWebMonitor
+# OpenWebMonitor
 
 网页内容监视器，网页内容变更监控，网页监控，网站内容变化检测，监控网页内容变化。支持动态内容，支持选择特定区域。
 
-Website content change monitor tool
 
-### 功能介绍
 
-![](https://fate2.oss-cn-shanghai.aliyuncs.com/pool/20180824170052.png)
+![](https://fate2.oss-cn-shanghai.aliyuncs.com/pool/20190307172826.png)
+
+
+
+
+
+![](https://fate2.oss-cn-shanghai.aliyuncs.com/pool/20190223134731.png)
+
+
+
+
+
+![](https://fate2.oss-cn-shanghai.aliyuncs.com/pool/20190223135056.png)
+
+
+
+
+
+![](https://fate2.oss-cn-shanghai.aliyuncs.com/pool/20190223135401.png)
+
+
 
 ### 下载
 
-[前往官网下载 (macOS/Windows)](http://openwebmonitor.netqon.com/)
+[前往官网 (macOS/Windows)](http://openwebmonitor.netqon.com/)
 
-### App截图
+### 截图
 
 ![](content/libs/n0.jpg)
 
@@ -25,6 +43,13 @@ Website content change monitor tool
 
 ### 帮助信息
 
-请查看官网的使用指南。
+[文档](http://fatecore.com/p/OpenWebMonitor/)
 
-(C) 2018 netqon.com
+用户QQ2群：945140787
+
+### LISCENSE
+MIT
+提示：此处代码仅含v1-2版本。
+
+
+©️2018-2019 fatecore.com
